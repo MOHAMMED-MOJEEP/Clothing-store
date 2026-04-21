@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>متجر باريس للملابس الفاخرة</title>
+    <link rel="icon" href="images/icon.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- شريط التنقل -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand" onclick="window.location.href='#home'" style="cursor: pointer;">باريس </div>
+            <ul class="nav-menu">
+                <li><a href="#home">الرئيسية</a></li>
+                <li><a href="#products">المنتجات</a></li>
+                <li><a href="#testimonials">آراء العملاء</a></li>
+                <li><a href="#about">من نحن</a></li>
+                <li><a href="#contact">اتصل بنا</a></li>
+            </ul>
+            <div class="nav-icons">
+                <button class="search-btn" onclick="toggleSearchBar()"><i class="fas fa-search"></i></button>
+                <button class="cart-btn" id="cartBtn"><i class="fas fa-shopping-bag"></i><span class="cart-count">0</span></button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- شريط البحث -->
+    <div class="search-bar" id="searchBar">
+        <div class="container">
+            <div class="search-input-wrapper">
+                <i class="fas fa-search search-icon-inner"></i>
+                <input type="text" id="searchInput" placeholder="ابحث عن المنتجات..." class="search-input">
+            </div>
+            <button class="search-close" onclick="toggleSearchBar()"><i class="fas fa-times"></i></button>
+        </div>
+    </div>
+
+    <!-- قسم الواجهة الرئيسية مع خلفية صورة مميزة -->
+    <section class="hero" id="home">
+        <div class="hero-background-image">
+            <img src="images/new-hero-bg.jpg" alt="Paris Fashion Boutique">
+            <div class="video-overlay"></div>
+        </div>
+        <div class="hero-content">
+            <h1>باريس للملابس الجأهزة</h1>
+            <h2>مجموعة الملابس الفاخرة</h2>
+            <p>اكتشف أحدث تصاميم الموضة الفاخرة من باريس</p>
+            <button class="btn btn-primary" onclick="document.getElementById('products').scrollIntoView({behavior: 'smooth'})">تسوق الآن</button>
+        </div>
+    </section>
+
+    <!-- المنتجات المميزة -->
+    <section class="products" id="products">
+        <div class="container">
+            <h2 class="section-title">المنتجات المميزة</h2>
+            
+            <!-- قسم الفلترة -->
+            <div class="filter-section">
+                <button class="filter-btn active" onclick="filterProducts('all')">الكل</button>
+                <button class="filter-btn" onclick="filterProducts('women')">نسائي</button>
+                <button class="filter-btn" onclick="filterProducts('men')">رجالي</button>
+                <button class="filter-btn" onclick="filterProducts('kids')">أطفال</button>
+            </div>
+
+            <div class="products-grid" id="productsGrid">
+                <!-- سيتم إدراج المنتجات هنا بواسطة JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- نافذة سلة المشتريات -->
+    <div class="modal" id="cartModal">
+        <div class="modal-content">
+            <span class="close" onclick="closeCart()">&times;</span>
+            <h2>سلة المشتريات</h2>
+            <div class="cart-items" id="cartItems">
+                <!-- سيتم إدراج عناصر السلة هنا -->
+            </div>
+            <div class="cart-summary">
+                <div class="summary-row">
+                    <span id="cartTotal">الإجمالي: صفر</span>
+                </div>
+                <button class="btn btn-primary btn-full" onclick="goToCheckout()">الذهاب للدفع</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- آراء العملاء -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <h2 class="section-title">آراء عملائنا</h2>
+            <div class="testimonials-grid" id="testimonialsGrid">
+                <!-- سيتم إدراج الآراء هنا بواسطة JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- من نحن -->
+    <section class="about" id="about">
+        <div class="container">
+            <h2 class="section-title">من نحن</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>متجر باريس للملابس الفاخرة هو وجهتك الأولى للحصول على أفضل تصاميم الموضة العصرية والفاخرة.</p>
+                    <p>نقدم مجموعة واسعة من الملابس والإكسسوارات عالية الجودة بأسعار تنافسية.</p>
+                    <div class="about-info">
+                        <div class="info-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <h4>العنوان</h4>
+                                <p>اليمن، صنعاء</p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <h4>الهاتف</h4>
+                                <p>337 807 782 967+</p>
+                                <p>777 062 772 967+</p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <h4>البريد الإلكتروني</h4>
+                                <p>mohammedmojepp4063177@gmail.com</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <img src="images/my.jpg" alt="About Paris" style="width:100%; border-radius:10px;">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- اتصل بنا -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2 class="section-title">اتصل بنا</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item whatsapp-item">
+                        <i class="fab fa-whatsapp"></i>
+                        <h3>WhatsApp</h3>
+                        <a href="https://wa.me/966501234567" target="_blank">337 807 782 967+</a>
+                    </div>
+                    <div class="contact-item instagram-item">
+                        <i class="fab fa-instagram"></i>
+                        <h3>Instagram</h3>
+                        <a href="https://instagram.com" target="_blank">@parisshop</a>
+                    </div>
+                    <div class="contact-item facebook-item">
+                        <i class="fab fa-facebook"></i>
+                        <h3>Facebook</h3>
+                        <a href="https://facebook.com" target="_blank">متجر باريس للملابس</a>
+                    </div>
+                    <div class="contact-item email-item">
+                        <i class="fas fa-envelope"></i>
+                        <h3>البريد الإلكتروني</h3>
+                        <a href="mailto:info@parisshop.com">mohammedmojepp4063177</a>
+                    </div>
+                </div>
+                <form class="contact-form" onsubmit="handleContactForm(event)">
+                    <input type="text" placeholder="اسمك" required>
+                    <input type="email" placeholder="بريدك الإلكتروني" required>
+                    <textarea placeholder="رسالتك" rows="5" required></textarea>
+                    <button type="submit" class="btn btn-primary btn-full">إرسال</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- التذييل -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; جميع الحقوق محفوظه لمتجر باريس للملابس 2026
+
+            </p>
+        </div>
+    </footer>
+
+    <!-- صفحة الدفع -->
+    <div class="checkout-page" id="checkoutPage">
+        <div class="checkout-container">
+            <button class="back-btn" onclick="backToShop()"><i class="fas fa-arrow-right"></i> العودة</button>
+            <h1>إتمام عملية الدفع</h1>
+            <div class="checkout-content">
+                <div class="checkout-form">
+                    <h2>بيانات الشحن</h2>
+                    <form onsubmit="handleCheckout(event)">
+                        <div class="form-group">
+                            <label>الاسم الكامل</label>
+                            <input type="text" placeholder="أدخل اسمك الكامل" required>
+                        </div>
+                        <div class="form-group">
+                            <label>البريد الإلكتروني</label>
+                            <input type="email" placeholder="example@mail.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label>رقم الهاتف</label>
+                            <input type="tel" placeholder="05XXXXXXXX" pattern="[0-9]{10,}" required>
+                        </div>
+                        <div class="form-group">
+                            <label>العنوان بالتفصيل</label>
+                            <input type="text" placeholder="اسم الشارع، الحي، رقم المبنى" required>
+                        </div>
+                        
+                        <h2 style="margin-top: 30px;">طريقة الدفع</h2>
+                        <div class="payment-methods">
+                            <label class="payment-option">
+                                <input type="radio" name="payment" value="visa" required checked>
+                                <span><i class="fab fa-cc-visa visa-icon"></i> فيزا</span>
+                            </label>
+                            <label class="payment-option">
+                                <input type="radio" name="payment" value="mastercard" required>
+                                <span><i class="fab fa-cc-mastercard mastercard-icon"></i> ماستر كارد</span>
+                            </label>
+                            <label class="payment-option">
+                                <input type="radio" name="payment" value="mada" required>
+                                <span><i class="fas fa-credit-card mada-icon"></i> مدى</span>
+                            </label>
+                        </div>
+                        
+                        <h2 style="margin-top: 30px;">بيانات البطاقة البنكية</h2>
+                        <div class="form-group">
+                            <label>رقم البطاقة</label>
+                            <input type="text" placeholder="0000 0000 0000 0000" pattern="[0-9]{13,19}" required>
+                        </div>
+                        <div class="card-details">
+                            <div class="form-group">
+                                <label>تاريخ الانتهاء</label>
+                                <input type="text" placeholder="MM/YY" pattern="[0-9]{2}/[0-9]{2}" required>
+                            </div>
+                            <div class="form-group">
+                                <label>رمز التحقق (CVV)</label>
+                                <input type="text" placeholder="123" pattern="[0-9]{3,4}" required>
+                            </div>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-checkout btn-full" style="margin-top: 30px;">تأكيد ودفع الطلب</button>
+                    </form>
+                </div>
+                <div class="checkout-summary">
+                    <h2>ملخص الطلب</h2>
+                    <div class="summary-items" id="summaryItems"></div>
+                    <div class="summary-total">
+                        <span>الإجمالي النهائي:</span>
+                        <span id="checkoutTotal">0 ريال</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
